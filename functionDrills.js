@@ -22,20 +22,48 @@ console.log(sum);
 // ex => var sampleArray = [1,2,3,4,5] 
 // expected output =>  sum = 6
     
-
 // 2. Write a JavaScript program to find the leap years in a given range of years. 
-/*
-Any year that is evenly divisible by 4 is a leap year. write this as a function. it's a list, so the function should have ONE parameter. have a list of years [] to test the function in the function's parenthesis when you're calling it. If array's element (functionArrayParameter[element]) is evenly divisble by 4 (%4); so, conditional statement and modulo --> if functionArrayParameter[element] % 4 == 0, then it's a leap year, console.log(array[element] + " is a leap year!"). Iterating through list so array.length*/
+function range(start, end) { //two parameters for test range; a starting year and an ending year!
+    let rangeList = []; //empty list to store future range that users input
 
-function isLeapyear (a) {
-for(let i = 0; i < a.length; i++) {
-    if(a[i] % 4 == 0){
-        console.log(a[i] + " is a leap year!");
-    }
-} return;
+    for(let i = start; i <= end; i++) 
+    {  
+        rangeList.push(i); //push each year user enters into one list
+    } 
+    
+    let storeRange = [];
+
+//test to see if the year entered is a leap year. Any year that is evenly divisible by 4 & 400 but not 100 is a leap year.
+function isleapYear(yr) {
+        if((yr % 400 == 0) || (yr % 100 != 0) && (yr % 4 == 0)) {
+            return yr; //if so return this year & later push it into a 'leap year list to print all leap years to the console'
+        } 
 } 
 
-isLeapyear([2000, 2001, 2003, 2005, 2008, 2017, 2018, 2019, 2020]); //don't need to console.log, just call the function!
+//Use .forEach() method to push each year that is a leap year into the new 'leap year' list (storeRange)
+    rangeList.forEach(yr => {
+        if (isleapYear(yr)) 
+            storeRange.push(yr  + " is a leap year");
+    });
+    
+    return storeRange;
+}
+
+//enter a range to test leap year function!
+console.log(range(2004, 2023)); 
+
+// // 2. Write a JavaScript program to find the leap years in a given range of years. 
+// /*
+// Any year that is evenly divisible by 4 is a leap year. write this as a function. it's a list, so the function should have ONE parameter. have a list of years [] to test the function in the function's parenthesis when you're calling it. If array's element (functionArrayParameter[element]) is evenly divisble by 4 (%4); so, conditional statement and modulo --> if functionArrayParameter[element] % 4 == 0, then it's a leap year, console.log(array[element] + " is a leap year!"). Iterating through list so array.length*/
+
+// function isLeapyear (a) {
+// for(let i = 0; i < a.length; i++) {
+//     if(a[i] % 4 == 0){
+//         console.log(a[i] + " is a leap year!");
+//     }
+// } return;
+// } 
+// isLeapyear([2000, 2001, 2003, 2005, 2008, 2017, 2018, 2019, 2020]); //don't need to console.log, just call the function!
 
 
 // 3. Write a JavaScript function to sort the following array of objects by title value.
